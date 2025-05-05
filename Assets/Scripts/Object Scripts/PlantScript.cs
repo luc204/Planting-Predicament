@@ -8,7 +8,8 @@ public class PlantScript : MonoBehaviour
     public Sprite[] StageSprites;
     public float []StageDurations = { 10f, 10f, 10f };
     public int CurrentStage = 0;
-    private float growthTimmer = 0f;
+    private float growthTimer = 0f;
+    private bool IsPlayerPresent = false;
 
     // Start is called before the first frame update
     void Start()
@@ -19,16 +20,13 @@ public class PlantScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CurrentStage < StageSprites.Length - 1)
+        if (Input.GetKeyDown(KeyCode.T) && CurrentStage > 0 && IsPlayerPresent)
         {
-            growthTimmer += Time.deltaTime;
-            if (growthTimmer >= StageDurations[CurrentStage])
-            {
-                CurrentStage++;
-                growthTimmer = 0f;
-                UpdateSprite();
-            }
+            Cut();
         }
+
+        Grow();
+        
     }
     void UpdateSprite()
     {
@@ -37,4 +35,43 @@ public class PlantScript : MonoBehaviour
             spriteRenderer.sprite = StageSprites[CurrentStage];
         }
     }
+    void OnTriggerEnter(Collider collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            IsPlayerPresent = true;
+            Debug.Log("Player entered plant trigger.");
+        }
+    }
+
+    void OnTriggerExit(Collider collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            IsPlayerPresent = false;
+            Debug.Log("Player exited plant trigger.");
+        }
+    }
+
+    void Cut()
+    {
+        CurrentStage--;
+        growthTimer = 0f;
+        UpdateSprite();
+    }
+
+    void Grow()
+    {
+        if (CurrentStage < StageSprites.Length - 1)
+        {
+            growthTimer += Time.deltaTime;
+            if (growthTimer >= StageDurations[CurrentStage])
+            {
+                CurrentStage++;
+                growthTimer = 0f;
+                UpdateSprite();
+            }
+        }
+    }
+
 }
