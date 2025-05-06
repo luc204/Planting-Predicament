@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMovement3D : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public float Speed = 5f;
     public Animator Animator;

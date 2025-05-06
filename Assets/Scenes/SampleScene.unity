@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1577,7 +1577,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.288614, y: 0, z: 0, w: 0.95744556}
-  m_LocalPosition: {x: 0.96, y: 4.3, z: -2.85}
+  m_LocalPosition: {x: 0.96, y: 4.197, z: -2.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4706,7 +4706,7 @@ Transform:
   m_GameObject: {fileID: 838137163}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.96, y: 0.8, z: 3.15}
+  m_LocalPosition: {x: 0.96, y: 0.697, z: 3.15}
   m_LocalScale: {x: 0.31057, y: 0.31057, z: 0.31057}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4737,7 +4737,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!65 &838137169
 BoxCollider:
@@ -7172,7 +7172,7 @@ Transform:
   m_GameObject: {fileID: 1368185426}
   serializedVersion: 2
   m_LocalRotation: {x: 0.288614, y: 0, z: 0, w: 0.95744556}
-  m_LocalPosition: {x: 0.96, y: 4.3, z: -2.85}
+  m_LocalPosition: {x: 0.96, y: 4.197, z: -2.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10477,6 +10477,7 @@ GameObject:
   - component: {fileID: 1846928353}
   - component: {fileID: 1846928352}
   - component: {fileID: 1846928355}
+  - component: {fileID: 1846928356}
   m_Layer: 0
   m_Name: Plant(Demo)
   m_TagString: Untagged
@@ -10554,11 +10555,14 @@ MonoBehaviour:
   - {fileID: 21300104, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
   - {fileID: 21300096, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
   - {fileID: 21300146, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  - {fileID: 21300184, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
   StageDurations:
-  - 10
-  - 10
-  - 10
+  - 5
+  - 5
+  - 5
+  - 5
   CurrentStage: 0
+  Enemy: {fileID: 7989684829910241717, guid: 074700f30737111489a09fa9ff6e8247, type: 3}
 --- !u!4 &1846928354
 Transform:
   m_ObjectHideFlags: 0
@@ -10595,6 +10599,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.0935864
   m_Center: {x: 0, y: 0, z: -0.59358644}
+--- !u!114 &1846928356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846928351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d037e04e7dbfd0644bd2d2d3a2aef1b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1858888581
 Mesh:
   m_ObjectHideFlags: 0

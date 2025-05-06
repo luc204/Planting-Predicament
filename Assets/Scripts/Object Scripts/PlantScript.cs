@@ -6,26 +6,34 @@ public class PlantScript : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
     public Sprite[] StageSprites;
-    public float []StageDurations = { 10f, 10f, 10f };
+    public float []StageDurations = { 10f, 10f, 10f, 5F };
     public int CurrentStage = 0;
     private float growthTimer = 0f;
     private bool IsPlayerPresent = false;
-
-    // Start is called before the first frame update
+    public GameObject Enemy;
     void Start()
     {
         UpdateSprite();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.T) && CurrentStage > 0 && IsPlayerPresent)
-        {
-            Cut();
-        }
 
-        Grow();
+        { 
+            if (CurrentStage == 3)
+            {
+            Cut();
+            }
+            else
+            {
+                Debug.Log("You can't cut this plant yet.");
+                //add a message to the player
+            }
+        }
+        Grow(); 
+
+
         
     }
     void UpdateSprite()
@@ -43,7 +51,6 @@ public class PlantScript : MonoBehaviour
             Debug.Log("Player entered plant trigger.");
         }
     }
-
     void OnTriggerExit(Collider collision)
     {
         if (collision.CompareTag("Player"))
@@ -52,14 +59,12 @@ public class PlantScript : MonoBehaviour
             Debug.Log("Player exited plant trigger.");
         }
     }
-
     void Cut()
     {
         CurrentStage--;
         growthTimer = 0f;
         UpdateSprite();
     }
-
     void Grow()
     {
         if (CurrentStage < StageSprites.Length - 1)
@@ -70,8 +75,21 @@ public class PlantScript : MonoBehaviour
                 CurrentStage++;
                 growthTimer = 0f;
                 UpdateSprite();
+                if (CurrentStage == 4)
+                {
+                    if (Enemy != null)
+                    {
+                        Vector3 spawnPosition = transform.position;
+                        Instantiate(Enemy, spawnPosition, Quaternion.identity);
+                        Debug.Log("Enemy spawned at " + spawnPosition);
+                    }
+                    else
+                    {
+                        Debug.Log("No enemy to spawn.");
+                    }
+                    Destroy(gameObject);
+                }
             }
         }
     }
-
 }
