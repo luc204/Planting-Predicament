@@ -5,11 +5,12 @@ public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI inventoryText; // Assign in Inspector
     public TextMeshProUGUI storePromptText; // Assign in Inspector
-    private Inventory inventory;
+    
+    private InventoryScript inventory;
 
     void Start()
     {
-        inventory = FindObjectOfType<Inventory>();
+        inventory = FindObjectOfType<InventoryScript>();
         if (inventory == null)
         {
             Debug.LogWarning("Inventory not found!");

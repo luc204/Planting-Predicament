@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class InventoryScript : MonoBehaviour
 {
     private Dictionary<string, int> items = new Dictionary<string, int>();
     public Dictionary<string, int> Items => items;

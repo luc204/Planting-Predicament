@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class PlantScript : MonoBehaviour
@@ -11,6 +12,8 @@ public class PlantScript : MonoBehaviour
     private float growthTimer = 0f;
     private bool IsPlayerPresent = false;
     public GameObject Enemy;
+    public GameObject PlantTrimmings;
+    
     void Start()
     {
         UpdateSprite();
@@ -65,9 +68,18 @@ public class PlantScript : MonoBehaviour
         CurrentStage--;
         growthTimer = 0f;
         UpdateSprite();
-        Inventory inventory = FindObjectOfType<Inventory>();
-        inventory.AddItem("PlantItem", 1); // Add 1 PlantItem
-        
+
+        Vector3 spawnPosition = transform.position;
+        GameObject trimmings = Instantiate(PlantTrimmings, spawnPosition, Quaternion.identity);
+
+        Rigidbody rb = trimmings.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            Vector3 randomDirection = Random.onUnitSphere;
+            randomDirection.y = Mathf.Abs(randomDirection.y); // Makes it fly outward and upward
+            float force = Random.Range(2f, 5f);
+            rb.AddForce(randomDirection * force, ForceMode.Impulse);
+        }
     }
 
     void Grow()

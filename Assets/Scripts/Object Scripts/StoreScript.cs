@@ -9,7 +9,7 @@ public class Store : MonoBehaviour
         // Sell items when player presses 'E' in store area
         if (isPlayerPresent && Input.GetKeyDown(KeyCode.E))
         {
-            Inventory inventory = FindObjectOfType<Inventory>();
+            InventoryScript inventory = FindObjectOfType<InventoryScript>();
             if (inventory != null)
             {
                 inventory.SellAllItems(10); // 10 coins per item
