@@ -4,6 +4,9 @@ public class Inventory2 : MonoBehaviour
 {
     public int currentIndex;
     int maxIndex;
+   
+    public int playerCoins = 0;
+    public PlayerStats playerStats;
 
     public ItemSlot[] itemSlots;
 
@@ -99,5 +102,31 @@ public class Inventory2 : MonoBehaviour
                 return;
             }
         }
+    }
+    public void SellAllItems(int pricePerItem)
+    {
+        int totalSold = 0;
+
+        foreach (var slot in itemSlots)
+        {
+            if (slot.itemInSlot != null && slot.itemCount > 0)
+            {
+                totalSold += slot.itemCount;
+
+                slot.itemInSlot = null;
+                slot.itemCount = 0;
+                slot.SpriteImage.enabled = false;
+                slot.itemCountText.enabled = false;
+            }
+        }
+
+        int totalCoins = totalSold * pricePerItem;
+
+        if (playerStats != null)
+        {
+            playerStats.AddCoins(totalCoins);
+        }
+
+        Debug.Log($"Sold {totalSold} items for {totalCoins} coins.");
     }
 }

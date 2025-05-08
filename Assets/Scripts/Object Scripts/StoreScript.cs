@@ -1,15 +1,27 @@
+using TMPro;
 using UnityEngine;
 
-public class Store : MonoBehaviour
+public class StoreScript : MonoBehaviour
 {
     private bool isPlayerPresent = false;
+    public TextMeshProUGUI sellPromptText;
+
+    void Start()
+    {
+        if (sellPromptText != null)
+        {
+            sellPromptText.gameObject.SetActive(false);
+            sellPromptText.text = "Press E to sell items";// hide on start
+        }
+    }
+
 
     void Update()
     {
         // Sell items when player presses 'E' in store area
         if (isPlayerPresent && Input.GetKeyDown(KeyCode.E))
         {
-            InventoryScript inventory = FindObjectOfType<InventoryScript>();
+            Inventory2 inventory = FindObjectOfType<Inventory2>();
             if (inventory != null)
             {
                 inventory.SellAllItems(10); // 10 coins per item
@@ -26,7 +38,8 @@ public class Store : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerPresent = true;
-            Debug.Log("Player entered store. Press E to sell items.");
+            if (sellPromptText != null)
+                sellPromptText.gameObject.SetActive(true);
         }
     }
 
@@ -35,7 +48,8 @@ public class Store : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerPresent = false;
-            Debug.Log("Player left store.");
+            if (sellPromptText != null)
+                sellPromptText.gameObject.SetActive(false);
         }
     }
 }
