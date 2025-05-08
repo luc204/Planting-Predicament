@@ -66,10 +66,8 @@ public class PlantScript : MonoBehaviour
         growthTimer = 0f;
         UpdateSprite();
         Inventory inventory = FindObjectOfType<Inventory>();
-        if (inventory != null)
-        {
-            inventory.AddItem("PlantItem", 1); // Add 1 PlantItem
-        }
+        inventory.AddItem("PlantItem", 1); // Add 1 PlantItem
+        
     }
 
     void Grow()
