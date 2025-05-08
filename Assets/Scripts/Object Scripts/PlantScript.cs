@@ -59,12 +59,19 @@ public class PlantScript : MonoBehaviour
             Debug.Log("Player exited plant trigger.");
         }
     }
+
     void Cut()
     {
         CurrentStage--;
         growthTimer = 0f;
         UpdateSprite();
+        Inventory inventory = FindObjectOfType<Inventory>();
+        if (inventory != null)
+        {
+            inventory.AddItem("PlantItem", 1); // Add 1 PlantItem
+        }
     }
+
     void Grow()
     {
         if (CurrentStage < StageSprites.Length - 1)
