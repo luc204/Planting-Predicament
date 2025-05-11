@@ -11,7 +11,7 @@ public class StoreScript : MonoBehaviour
         if (sellPromptText != null)
         {
             sellPromptText.gameObject.SetActive(false);
-            sellPromptText.text = "Press E to sell items";// hide on start
+            sellPromptText.text = "Press E to sell items";
         }
     }
 
@@ -24,7 +24,7 @@ public class StoreScript : MonoBehaviour
             Inventory2 inventory = FindObjectOfType<Inventory2>();
             if (inventory != null)
             {
-                inventory.SellAllItems(10); // 10 coins per item
+                inventory.SellSelectedItem(); 
             }
             else
             {

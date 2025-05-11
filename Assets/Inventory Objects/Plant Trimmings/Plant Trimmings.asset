@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Plant Trimmings
   itemSprite: {fileID: 21300094, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  sellValue: 1
+  pickupPrefab: {fileID: 2163947069450172325, guid: 26cb12514077c9b44a075503ec70105b,
+    type: 3}

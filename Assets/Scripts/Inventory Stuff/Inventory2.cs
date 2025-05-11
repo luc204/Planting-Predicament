@@ -1,11 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Inventory2 : MonoBehaviour
 {
     public int currentIndex;
     int maxIndex;
-   
-    public int playerCoins = 0;
+
+    
     public PlayerStats playerStats;
 
     public ItemSlot[] itemSlots;
@@ -23,6 +24,8 @@ public class Inventory2 : MonoBehaviour
         }
 
         maxIndex = itemSlots.Length;
+
+        
     }
 
     void Update()
@@ -42,6 +45,10 @@ public class Inventory2 : MonoBehaviour
         else if (scroll < 0f)
         {
             currentIndex = (currentIndex - 1 + maxIndex) % maxIndex;
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            DropSelectedItem();
         }
     }
 
@@ -103,30 +110,86 @@ public class Inventory2 : MonoBehaviour
             }
         }
     }
-    public void SellAllItems(int pricePerItem)
+    public void SellSelectedItem()
     {
-        int totalSold = 0;
+        if (currentIndex < 0 || currentIndex >= itemSlots.Length)
+            return;
 
-        foreach (var slot in itemSlots)
+        ItemSlot selectedSlot = itemSlots[currentIndex];
+
+        if (selectedSlot.itemInSlot != null && selectedSlot.itemCount > 0)
         {
-            if (slot.itemInSlot != null && slot.itemCount > 0)
-            {
-                totalSold += slot.itemCount;
+            int itemValue = selectedSlot.itemInSlot.sellValue;
+            int totalCoins = selectedSlot.itemCount * itemValue;
 
-                slot.itemInSlot = null;
-                slot.itemCount = 0;
-                slot.SpriteImage.enabled = false;
-                slot.itemCountText.enabled = false;
+            // Add coins to player
+            if (playerStats != null)
+            {
+                playerStats.AddCoins(totalCoins);
+            }
+
+            Debug.Log($"Sold {selectedSlot.itemCount} x {selectedSlot.itemInSlot.itemName} for {totalCoins} coins.");
+
+            // Clear the slot
+            selectedSlot.itemInSlot = null;
+            selectedSlot.itemCount = 0;
+            selectedSlot.SpriteImage.enabled = false;
+            selectedSlot.itemCountText.enabled = false;
+        }
+        else
+        {
+            Debug.Log("No item in selected slot to sell.");
+        }
+    }
+
+    public void DropSelectedItem()
+    {
+        if (currentIndex < 0 || currentIndex >= itemSlots.Length)
+            return;
+
+        ItemSlot selectedSlot = itemSlots[currentIndex];
+
+        if (selectedSlot.itemInSlot != null && selectedSlot.itemCount > 0)
+        {
+            GameObject prefab = selectedSlot.itemInSlot.pickupPrefab;
+
+            if (prefab != null)
+            {
+
+                Vector3 dropPosition = transform.position + transform.forward + Vector3.up * 0.5f; // Slightly in front and above the player
+                GameObject droppedItem = Instantiate(prefab, dropPosition, Quaternion.identity);
+                droppedItem.transform.SetParent(null);
+
+                Rigidbody rb = droppedItem.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.AddForce(transform.forward * 2f + Vector3.up * 1f, ForceMode.Impulse);
+                }
+            }
+            else
+            {
+                Debug.LogWarning("No pickupPrefab assigned to " + selectedSlot.itemInSlot.name);
+            }
+
+            // Remove one from inventory
+            selectedSlot.itemCount--;
+
+            if (selectedSlot.itemCount <= 0)
+            {
+                selectedSlot.itemInSlot = null;
+                selectedSlot.itemCount = 0;
+                selectedSlot.SpriteImage.enabled = false;
+                selectedSlot.itemCountText.enabled = false;
+            }
+            else
+            {
+                selectedSlot.itemCountText.text = selectedSlot.itemCount.ToString();
             }
         }
-
-        int totalCoins = totalSold * pricePerItem;
-
-        if (playerStats != null)
+        else
         {
-            playerStats.AddCoins(totalCoins);
+            Debug.Log("No item to drop.");
         }
-
-        Debug.Log($"Sold {totalSold} items for {totalCoins} coins.");
     }
+
 }
