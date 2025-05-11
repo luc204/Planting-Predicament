@@ -4,11 +4,8 @@ using UnityEngine;
 public class Inventory2 : MonoBehaviour
 {
     public int currentIndex;
-    int maxIndex;
-
-    
+    int maxIndex; 
     public PlayerStats playerStats;
-
     public ItemSlot[] itemSlots;
 
     void Start()
@@ -17,15 +14,11 @@ public class Inventory2 : MonoBehaviour
         {
             itemSlots = GetComponentsInChildren<ItemSlot>();
         }
-
         foreach (var slot in itemSlots)
         {
             slot.Init();
         }
-
         maxIndex = itemSlots.Length;
-
-        
     }
 
     void Update()
@@ -46,10 +39,7 @@ public class Inventory2 : MonoBehaviour
         {
             currentIndex = (currentIndex - 1 + maxIndex) % maxIndex;
         }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            DropSelectedItem();
-        }
+        
     }
 
     public void AddItem(ItemData item)
@@ -64,8 +54,6 @@ public class Inventory2 : MonoBehaviour
                 return;
             }
         }
-
-        // Add to new slot
         foreach (var slot in itemSlots)
         {
             if (slot.itemInSlot == null)
@@ -82,7 +70,6 @@ public class Inventory2 : MonoBehaviour
                 return;
             }
         }
-
         Debug.LogWarning("Inventory full — couldn't add item.");
     }
 
@@ -122,7 +109,6 @@ public class Inventory2 : MonoBehaviour
             int itemValue = selectedSlot.itemInSlot.sellValue;
             int totalCoins = selectedSlot.itemCount * itemValue;
 
-            // Add coins to player
             if (playerStats != null)
             {
                 playerStats.AddCoins(totalCoins);
@@ -130,19 +116,17 @@ public class Inventory2 : MonoBehaviour
 
             Debug.Log($"Sold {selectedSlot.itemCount} x {selectedSlot.itemInSlot.itemName} for {totalCoins} coins.");
 
-            // Clear the slot
             selectedSlot.itemInSlot = null;
             selectedSlot.itemCount = 0;
             selectedSlot.SpriteImage.enabled = false;
             selectedSlot.itemCountText.enabled = false;
-        }
+        }    // Clear the slot and adds money to the players stats.
         else
         {
             Debug.Log("No item in selected slot to sell.");
         }
     }
-
-    public void DropSelectedItem()
+    public void DropSelectedItem(Transform dropOrigin)
     {
         if (currentIndex < 0 || currentIndex >= itemSlots.Length)
             return;
@@ -155,24 +139,21 @@ public class Inventory2 : MonoBehaviour
 
             if (prefab != null)
             {
-
-                Vector3 dropPosition = transform.position + transform.forward + Vector3.up * 0.5f; // Slightly in front and above the player
+                Vector3 dropPosition = dropOrigin.position + dropOrigin.forward + Vector3.up * 0.5f;
                 GameObject droppedItem = Instantiate(prefab, dropPosition, Quaternion.identity);
                 droppedItem.transform.SetParent(null);
 
                 Rigidbody rb = droppedItem.GetComponent<Rigidbody>();
                 if (rb != null)
                 {
-                    rb.AddForce(transform.forward * 2f + Vector3.up * 1f, ForceMode.Impulse);
+                    rb.AddForce(dropOrigin.forward * 2f + Vector3.up * 1f, ForceMode.Impulse);
                 }
             }
             else
             {
                 Debug.LogWarning("No pickupPrefab assigned to " + selectedSlot.itemInSlot.name);
             }
-
-            // Remove one from inventory
-            selectedSlot.itemCount--;
+            selectedSlot.itemCount--; // removes a singular item from the selected slot
 
             if (selectedSlot.itemCount <= 0)
             {
@@ -191,5 +172,5 @@ public class Inventory2 : MonoBehaviour
             Debug.Log("No item to drop.");
         }
     }
-
+    
 }

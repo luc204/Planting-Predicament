@@ -4,7 +4,7 @@ public class PlayerInteraction : MonoBehaviour
 {
     public GameObject inventoryObject; // Drag the Inventory GameObject from your Canvas
     private Inventory2 inventory;
-
+    
     private ItemPickup currentPickup;
 
     void Start()
@@ -19,6 +19,10 @@ public class PlayerInteraction : MonoBehaviour
             inventory.AddItem(currentPickup.itemToGive);
             Destroy(currentPickup.gameObject);
             currentPickup = null;
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            inventory.DropSelectedItem(transform);
         }
     }
 
@@ -37,6 +41,7 @@ public class PlayerInteraction : MonoBehaviour
             currentPickup = null;
         }
     }
+  
 }
 
 
