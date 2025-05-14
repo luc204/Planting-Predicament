@@ -133,7 +133,7 @@ public class Inventory2 : MonoBehaviour
 
         ItemSlot selectedSlot = itemSlots[currentIndex];
 
-        if (selectedSlot.itemInSlot != null && selectedSlot.itemCount > 0)
+        if (selectedSlot.itemInSlot != null && selectedSlot.itemInSlot.itemType == ItemData.ItemType.Dropable && selectedSlot.itemCount > 0)
         {
             GameObject prefab = selectedSlot.itemInSlot.pickupPrefab;
 
@@ -172,5 +172,29 @@ public class Inventory2 : MonoBehaviour
             Debug.Log("No item to drop.");
         }
     }
-    
+    public void PlaceSelectedItem(Transform placeOrigin)
+    {
+        ItemSlot selectedSlot = itemSlots[currentIndex];
+
+        if (selectedSlot.itemInSlot != null &&
+            selectedSlot.itemInSlot.itemType == ItemData.ItemType.Placeable &&
+            selectedSlot.itemCount > 0)
+        {
+            Vector3 placePosition = placeOrigin.position + placeOrigin.forward ;
+            Instantiate(selectedSlot.itemInSlot.PlaceablePrefab, placePosition, Quaternion.identity);
+
+            selectedSlot.itemCount--;
+            if (selectedSlot.itemCount <= 0)
+            {
+                selectedSlot.itemInSlot = null;
+                selectedSlot.SpriteImage.enabled = false;
+                selectedSlot.itemCountText.enabled = false;
+            }
+            else
+            {
+                selectedSlot.itemCountText.text = selectedSlot.itemCount.ToString();
+            }
+        }
+    }
+
 }

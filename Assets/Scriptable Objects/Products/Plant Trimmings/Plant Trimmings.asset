@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 887c2f14d12990f4cbb5e52cefe726ae, type: 3}
-  m_Name: apple
+  m_Name: Plant Trimmings
   m_EditorClassIdentifier: 
-  itemName: apple
-  itemSprite: {fileID: 21300178, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
-  sellValue: 5
-  pickupPrefab: {fileID: 5224820514208085299, guid: 8482fad0cffc5204d9629b10f6a51c91,
+  itemName: Plant Trimmings
+  itemSprite: {fileID: 21300094, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  sellValue: 1
+  pickupPrefab: {fileID: 2163947069450172325, guid: 26cb12514077c9b44a075503ec70105b,
     type: 3}
+  PlaceablePrefab: {fileID: 0}
+  itemType: 1

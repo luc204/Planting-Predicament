@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Inventory
+  - Placeable
   layers:
   - Default
   - TransparentFX

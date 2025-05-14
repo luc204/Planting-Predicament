@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47fef9bc830742e46af2198073a3cccf, type: 3}
+  m_Name: Pumpkin
+  m_EditorClassIdentifier: 
+  plantName: Pumpkin
+  stageSprites:
+  - {fileID: 21300098, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  - {fileID: 21300106, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  - {fileID: 21300256, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  - {fileID: 21300258, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  stageDurations:
+  - 2
+  - 2
+  - 5
+  - 5
+  cuttableStage: 2
+  enemyToSpawn: {fileID: 7689348221730982594, guid: 0e7f84f2bc89f674f8379cd652a62f1a,
+    type: 3}
+  trimmingPrefab: {fileID: 5027033667450783935, guid: 3b1090474838a5c40bcbb82538bd1dc9,
+    type: 3}

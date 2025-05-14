@@ -6,7 +6,7 @@ public class ChestController : MonoBehaviour
     private bool isOpened = false; // Track if the chest is open
     public bool playerInRange = false;
 
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     public AudioClip openSound;
     public AudioClip closeSound;
     void Start()
