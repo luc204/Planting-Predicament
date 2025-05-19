@@ -16,7 +16,7 @@ public class PlantScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T) && isPlayerPresent && currentStage >= plantData.cuttableStage)
+        if (Input.GetKeyDown(KeyCode.T) && isPlayerPresent && currentStage == plantData.cuttableStage)
         {
             Cut();
         }

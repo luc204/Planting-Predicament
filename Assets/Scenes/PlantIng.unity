@@ -5975,7 +5975,6 @@ GameObject:
   - component: {fileID: 940913474}
   - component: {fileID: 940913473}
   - component: {fileID: 940913472}
-  - component: {fileID: 940913471}
   m_Layer: 0
   m_Name: Delivery Station
   m_TagString: Untagged
@@ -5983,20 +5982,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &940913471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 940913470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c87d6bb9e9e9a4d4b98b3f09d0004483, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deliverySystemScript: {fileID: 940913472}
-  newPlantItem: {fileID: 11400000, guid: 70e3a1b08ce35f44d9ae2450ee13f4af, type: 2}
 --- !u!114 &940913472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6013,7 +5998,7 @@ MonoBehaviour:
   PlayerInRange: 0
   itemsToDeliver: []
   RemoveItemsAfterDelivery: 1
-  playerMoney: 0
+  newPlantItem: {fileID: 0}
 --- !u!135 &940913473
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6108,7 +6093,7 @@ Transform:
   m_GameObject: {fileID: 940913470}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.69, y: 0.7, z: 10.21}
+  m_LocalPosition: {x: 7.43, y: 0.7, z: 12.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12419,7 +12404,7 @@ PrefabInstance:
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.26
+      value: 2.34
       objectReference: {fileID: 0}
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
@@ -12429,7 +12414,7 @@ PrefabInstance:
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.07
+      value: 12.49
       objectReference: {fileID: 0}
     - target: {fileID: 4653831799294361326, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
@@ -12466,14 +12451,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4653831799294361327, guid: 7903d081236f2304396572efb80b5f8f,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300066, guid: 7810966f0f690954c87305933cabf2b0,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4653831799294361312, guid: 7903d081236f2304396572efb80b5f8f,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1926854991}
     - targetCorrespondingSourceObject: {fileID: 4653831799294361312, guid: 7903d081236f2304396572efb80b5f8f,
         type: 3}
       insertIndex: -1
@@ -12486,6 +12473,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1926854997}
+    - targetCorrespondingSourceObject: {fileID: 4653831799294361312, guid: 7903d081236f2304396572efb80b5f8f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1926855001}
   m_SourcePrefab: {fileID: 100100000, guid: 7903d081236f2304396572efb80b5f8f, type: 3}
 --- !u!1 &1926854990 stripped
 GameObject:
@@ -12493,27 +12484,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1877578026}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1926854991
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926854990}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.5256451, y: 5.09375, z: 0.9577483}
-  m_Center: {x: -0.023231171, y: 2.515625, z: -0.37226796}
 --- !u!114 &1926854994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12560,6 +12530,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sellPromptText: {fileID: 410578382}
+--- !u!65 &1926855001
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926854990}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.7187498, y: 2.8437498, z: 0.19999999}
+  m_Center: {x: -0.1755886, y: 1.4218749, z: 0}
 --- !u!1 &1950957191
 GameObject:
   m_ObjectHideFlags: 0
@@ -13716,8 +13707,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deliverySystem: {fileID: 940913472}
-  itemToDeliver: {fileID: 11400000, guid: 70e3a1b08ce35f44d9ae2450ee13f4af, type: 2}
+  AppleSeeds: {fileID: 0}
+  WheatSeeds: {fileID: 11400000, guid: 70e3a1b08ce35f44d9ae2450ee13f4af, type: 2}
+  PumpkinSeeds: {fileID: 11400000, guid: d5da333a796a14e4ca5de84ad4dee0a8, type: 2}
   deliveryDelay: 5
+  deliveryCoinThreshold: 10
 --- !u!4 &2142379378
 Transform:
   m_ObjectHideFlags: 0
@@ -13859,10 +13853,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6513377778806383854, guid: 74ea99d61d7ef034189c8ec95488ada5,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513377778806383854, guid: 74ea99d61d7ef034189c8ec95488ada5,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.28125
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513377778806383854, guid: 74ea99d61d7ef034189c8ec95488ada5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300104, guid: 7810966f0f690954c87305933cabf2b0,
+        type: 3}
+    - target: {fileID: 6513377778806383854, guid: 74ea99d61d7ef034189c8ec95488ada5,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7260012929259304264, guid: 74ea99d61d7ef034189c8ec95488ada5,
         type: 3}
       propertyPath: m_Name
       value: Plant(Demo)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7260012929259304264, guid: 74ea99d61d7ef034189c8ec95488ada5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13881,6 +13901,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SecondPlant
+      objectReference: {fileID: 0}
+    - target: {fileID: 234440420606974355, guid: 77e65d93e58e7ef49ab2a72f6b64852a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4211562166703515588, guid: 77e65d93e58e7ef49ab2a72f6b64852a,
         type: 3}

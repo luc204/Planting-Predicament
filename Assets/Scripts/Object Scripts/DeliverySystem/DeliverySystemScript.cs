@@ -10,22 +10,7 @@ public class DeliverySystemScript : MonoBehaviour
     public bool PlayerInRange = false;
     public List<ItemData> itemsToDeliver;
     public bool RemoveItemsAfterDelivery = true;
-
-    
-    public int playerMoney = 0;
-
-    private void Start()
-    {
-        playerStats = FindObjectOfType<PlayerStats>();
-        if (playerStats != null)
-        {
-            playerMoney = playerStats.coins;
-        }
-        else
-        {
-            Debug.LogWarning("PlayerStats not found!");
-        }
-    }
+    public ItemData newPlantItem;
 
     void Update()
     {
@@ -52,6 +37,18 @@ public class DeliverySystemScript : MonoBehaviour
             }
         }
        
+    }
+    public void AddToDelivery()
+    {
+        if (newPlantItem != null)
+        {
+            itemsToDeliver.Add(newPlantItem);
+            Debug.Log($"{newPlantItem.name} added to delivery system.");
+        }
+        else
+        {
+            Debug.LogWarning("Missing reference to delivery system or item.");
+        }
     }
 
     private void OnTriggerEnter(Collider other)

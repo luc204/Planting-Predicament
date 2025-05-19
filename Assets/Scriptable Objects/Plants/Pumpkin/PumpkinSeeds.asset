@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 887c2f14d12990f4cbb5e52cefe726ae, type: 3}
-  m_Name: Plant(Demo)
+  m_Name: PumpkinSeeds
   m_EditorClassIdentifier: 
-  itemName: Plant
-  itemSprite: {fileID: 21300144, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  itemName: 
+  itemSprite: {fileID: 21300256, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
   sellValue: 0
   pickupPrefab: {fileID: 0}
-  PlaceablePrefab: {fileID: 7260012929259304264, guid: 74ea99d61d7ef034189c8ec95488ada5,
+  PlaceablePrefab: {fileID: 234440420606974355, guid: 77e65d93e58e7ef49ab2a72f6b64852a,
     type: 3}
   itemType: 0

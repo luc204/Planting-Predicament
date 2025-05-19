@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static ItemData;
 
 public class Inventory2 : MonoBehaviour
 {
@@ -66,6 +67,7 @@ public class Inventory2 : MonoBehaviour
 
                 slot.itemCountText.text = "1";
                 slot.itemCountText.enabled = true;
+                
 
                 return;
             }
@@ -106,24 +108,27 @@ public class Inventory2 : MonoBehaviour
 
         if (selectedSlot.itemInSlot != null && selectedSlot.itemCount > 0)
         {
-            int itemValue = selectedSlot.itemInSlot.sellValue;
-            int totalCoins = selectedSlot.itemCount * itemValue;
-
-            if (playerStats != null)
+            if (selectedSlot.itemInSlot.itemType == ItemType.Dropable)
             {
-                playerStats.AddCoins(totalCoins);
+                int itemValue = selectedSlot.itemInSlot.sellValue;
+                int totalCoins = selectedSlot.itemCount * itemValue;
+
+                if (playerStats != null)
+                {
+                    playerStats.AddCoins(totalCoins);
+                }
+
+                Debug.Log($"Sold {selectedSlot.itemCount} x {selectedSlot.itemInSlot.itemName} for {totalCoins} coins.");
+
+                selectedSlot.itemInSlot = null;
+                selectedSlot.itemCount = 0;
+                selectedSlot.SpriteImage.enabled = false;
+                selectedSlot.itemCountText.enabled = false;
             }
-
-            Debug.Log($"Sold {selectedSlot.itemCount} x {selectedSlot.itemInSlot.itemName} for {totalCoins} coins.");
-
-            selectedSlot.itemInSlot = null;
-            selectedSlot.itemCount = 0;
-            selectedSlot.SpriteImage.enabled = false;
-            selectedSlot.itemCountText.enabled = false;
-        }    // Clear the slot and adds money to the players stats.
+        }// Clear the slot and adds money to the players stats.
         else
         {
-            Debug.Log("No item in selected slot to sell.");
+            Debug.Log("No item in selected slot to sell or not sellable.");
         }
     }
     public void DropSelectedItem(Transform dropOrigin)

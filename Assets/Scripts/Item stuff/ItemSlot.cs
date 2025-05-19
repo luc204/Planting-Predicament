@@ -11,6 +11,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public ItemData itemInSlot;
     public int itemCount;
     public int index;
+    
 
     [HideInInspector] public Image slotImage;
     [HideInInspector] public Image SpriteImage;
@@ -51,6 +52,8 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             slotImage.transform.localScale = new Vector3(1f, 1f, 1f);
         }
     }
+
+     
     public void OnPointerClick(PointerEventData eventData)
     {
         

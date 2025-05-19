@@ -24,5 +24,9 @@ public class PlayerStats : MonoBehaviour
             coinText.text = "Coins: " + coins.ToString();
         }
     }
+    public int GetCoins() 
+    {
+       return coins;
+    }
 }
 
