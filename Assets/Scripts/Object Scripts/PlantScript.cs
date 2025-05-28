@@ -4,6 +4,7 @@ public class PlantScript : MonoBehaviour
 {
     public PlantType plantData;
     public SpriteRenderer spriteRenderer;
+    
 
     private int currentStage = 0;
     private float growthTimer = 0f;

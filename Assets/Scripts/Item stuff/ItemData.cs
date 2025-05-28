@@ -13,10 +13,18 @@ public class ItemData : ScriptableObject
     public ItemType itemType;
     public enum ItemType
     {
-        Placeable,
-        Dropable,
-        Tool
+        Plant,
+        Item,
+        Tool,
+        DontUse
     }
+    public string plantName;
+    public Sprite[] stageSprites;
+    public GameObject[] stageModels;
+    public float[] stageDurations;
+    public int cuttableStage = 3;
 
+    public GameObject enemyToSpawn;
+    public GameObject trimmingPrefab;
 
 }

@@ -18,4 +18,11 @@ MonoBehaviour:
   pickupPrefab: {fileID: 5027033667450783935, guid: 3b1090474838a5c40bcbb82538bd1dc9,
     type: 3}
   PlaceablePrefab: {fileID: 0}
-  itemType: 1
+  itemType: 2
+  plantName: 
+  stageSprites: []
+  stageModels: []
+  stageDurations: []
+  cuttableStage: 3
+  enemyToSpawn: {fileID: 0}
+  trimmingPrefab: {fileID: 0}

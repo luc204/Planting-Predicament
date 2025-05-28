@@ -8,6 +8,7 @@ public class Inventory2 : MonoBehaviour
     int maxIndex; 
     public PlayerStats playerStats;
     public ItemSlot[] itemSlots;
+    [SerializeField] private GameObject plantPrefab;
 
     void Start()
     {
@@ -108,7 +109,7 @@ public class Inventory2 : MonoBehaviour
 
         if (selectedSlot.itemInSlot != null && selectedSlot.itemCount > 0)
         {
-            if (selectedSlot.itemInSlot.itemType == ItemType.Dropable)
+            if (selectedSlot.itemInSlot.itemType == ItemType.Item)
             {
                 int itemValue = selectedSlot.itemInSlot.sellValue;
                 int totalCoins = selectedSlot.itemCount * itemValue;
@@ -138,7 +139,7 @@ public class Inventory2 : MonoBehaviour
 
         ItemSlot selectedSlot = itemSlots[currentIndex];
 
-        if (selectedSlot.itemInSlot != null && selectedSlot.itemInSlot.itemType == ItemData.ItemType.Dropable && selectedSlot.itemCount > 0)
+        if (selectedSlot.itemInSlot != null && selectedSlot.itemInSlot.itemType == ItemData.ItemType.Item && selectedSlot.itemCount > 0)
         {
             GameObject prefab = selectedSlot.itemInSlot.pickupPrefab;
 
@@ -182,7 +183,7 @@ public class Inventory2 : MonoBehaviour
         ItemSlot selectedSlot = itemSlots[currentIndex];
 
         if (selectedSlot.itemInSlot != null &&
-            selectedSlot.itemInSlot.itemType == ItemData.ItemType.Placeable &&
+            selectedSlot.itemInSlot.itemType == ItemData.ItemType.DontUse &&
             selectedSlot.itemCount > 0)
         {
             Vector3 placePosition = placeOrigin.position + placeOrigin.forward ;
@@ -201,5 +202,33 @@ public class Inventory2 : MonoBehaviour
             }
         }
     }
+    public void TryPlantAt(PlantScript2 plantSpot)
+    {
+        ItemSlot selectedSlot = itemSlots[currentIndex];
+
+        if (selectedSlot.itemInSlot != null &&
+            selectedSlot.itemInSlot.itemType == ItemData.ItemType.Plant &&
+            selectedSlot.itemCount > 0 &&
+            !plantSpot.IsPlanted)
+        {
+            // Send data to the Plant
+            plantSpot.SetPlantData(selectedSlot.itemInSlot);
+
+            // Reduce inventory
+            selectedSlot.itemCount--;
+            if (selectedSlot.itemCount <= 0)
+            {
+                selectedSlot.itemInSlot = null;
+                selectedSlot.SpriteImage.enabled = false;
+                selectedSlot.itemCountText.enabled = false;
+            }
+            else
+            {
+                selectedSlot.itemCountText.text = selectedSlot.itemCount.ToString();
+            }
+        }
+    }
+
+
 
 }

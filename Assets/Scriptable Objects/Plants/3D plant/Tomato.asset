@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47fef9bc830742e46af2198073a3cccf, type: 3}
+  m_Name: Tomato
+  m_EditorClassIdentifier: 
+  plantName: Tomato
+  stageSprites: []
+  stageModels:
+  - {fileID: 2630425031254273193, guid: ff4399c5c516b6145b031f40e03b2334, type: 3}
+  - {fileID: 9021533571043771964, guid: 3de640461f794dc44a223f1cfedb8abf, type: 3}
+  - {fileID: 8331122410249767392, guid: 1263c5c5f1c53d941996ba932a56be28, type: 3}
+  - {fileID: 1941980279283757603, guid: 1ff530657f12e2944895de229213090e, type: 3}
+  - {fileID: 9218926353566358502, guid: 98541326b56e6e14eb84d42aa2461bac, type: 3}
+  - {fileID: 6651310731303358679, guid: 1392dbd2be3bbd04d8e5c57b904b42ae, type: 3}
+  stageDurations:
+  - 2
+  - 2
+  - 2
+  - 2
+  - 5
+  cuttableStage: 4
+  enemyToSpawn: {fileID: 4107486585739814537, guid: 327253dec8f4b834db84f5a2c0098d6c,
+    type: 3}
+  trimmingPrefab: {fileID: 8024138077497201047, guid: 0973330bb48b15f4f868bd28168b9eea,
+    type: 3}

@@ -7,6 +7,8 @@ public class PlayerInteraction : MonoBehaviour
     
     private ItemPickup currentPickup;
     public bool CanPlaceHere = false;
+    public PlantScript2 currentPlantSpot;
+    public bool CanPlaceUp = false;
 
     void Start()
     {
@@ -29,6 +31,14 @@ public class PlayerInteraction : MonoBehaviour
         {
             inventory.PlaceSelectedItem(transform); 
         }
+        if (Input.GetKeyDown(KeyCode.E) && currentPlantSpot != null)
+        {
+            if (inventory != null)
+            {
+                inventory.TryPlantAt(currentPlantSpot);
+            }
+        }
+        
     }
 
     void OnTriggerEnter(Collider other)
@@ -43,6 +53,18 @@ public class PlayerInteraction : MonoBehaviour
 
             Debug.Log("Can place here: " + CanPlaceHere);
         }
+
+        if (other.CompareTag("PlantingSpot"))
+        {
+            currentPlantSpot = other.GetComponent<PlantScript2>();
+
+            Debug.Log("can see planting spot");
+            if (currentPlantSpot != null && currentPlantSpot.IsPlanted)
+            {
+                Debug.Log("Planting spot is already occupied.");
+                currentPlantSpot = null; 
+            }
+        }
     }
 
     void OnTriggerExit(Collider other)
@@ -55,6 +77,10 @@ public class PlayerInteraction : MonoBehaviour
         if (other.CompareTag("Placeable"))
         {
             CanPlaceHere = false;
+        }
+        if (other.CompareTag("PlantingSpot"))
+        {
+            currentPlantSpot = other.GetComponent<PlantScript2>();
         }
     }
   

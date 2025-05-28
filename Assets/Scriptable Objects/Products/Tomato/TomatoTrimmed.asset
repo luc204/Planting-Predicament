@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 887c2f14d12990f4cbb5e52cefe726ae, type: 3}
-  m_Name: Wheat Seeds
+  m_Name: TomatoTrimmed
   m_EditorClassIdentifier: 
-  itemName: Plant
-  itemSprite: {fileID: 21300144, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
-  sellValue: 0
-  pickupPrefab: {fileID: 0}
-  PlaceablePrefab: {fileID: 7260012929259304264, guid: 74ea99d61d7ef034189c8ec95488ada5,
+  itemName: 
+  itemSprite: {fileID: 21300178, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  sellValue: 6
+  pickupPrefab: {fileID: 8024138077497201047, guid: 0973330bb48b15f4f868bd28168b9eea,
     type: 3}
-  itemType: 3
+  PlaceablePrefab: {fileID: 0}
+  itemType: 1
   plantName: 
   stageSprites: []
   stageModels: []

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Inventory
   - Placeable
+  - PlantingSpot
   layers:
   - Default
   - TransparentFX
