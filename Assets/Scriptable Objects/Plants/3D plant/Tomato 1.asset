@@ -31,7 +31,7 @@ MonoBehaviour:
   - 2
   - 2
   - 2
-  - 5
+  - 2
   - 5
   cuttableStage: 4
   enemyToSpawn: {fileID: 7689348221730982594, guid: 0e7f84f2bc89f674f8379cd652a62f1a,

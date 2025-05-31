@@ -23,10 +23,10 @@ public class PlantScript2 : MonoBehaviour
         {
             Cut();
         }
-
-        Grow();
-
-
+        if (IsPlanted)
+        {
+            Grow();
+        }
     }
 
     void Grow()
@@ -39,10 +39,10 @@ public class PlantScript2 : MonoBehaviour
 
                 if (growthTimer >= plantData.stageDurations[currentStage])
                 {
-                    UpdateStageVisual();
                     currentStage++;
                     growthTimer = 0f;
-                    
+                    UpdateStageVisual();
+
                     if (currentStage == plantData.stageModels.Length - 1 && plantData.enemyToSpawn != null)
                     {
                         Instantiate(plantData.enemyToSpawn, transform.position, Quaternion.identity);
@@ -60,7 +60,7 @@ public class PlantScript2 : MonoBehaviour
 
         if (plantData.trimmingPrefab != null)
         {
-            GameObject trimmings = Instantiate(plantData.trimmingPrefab, transform.position, Quaternion.identity);
+            GameObject trimmings = Instantiate(plantData.trimmingPrefab, transform.position + Vector3.up * 1, Quaternion.identity);
             Rigidbody rb = trimmings.GetComponent<Rigidbody>();
             if (rb != null)
             {
@@ -78,12 +78,10 @@ public class PlantScript2 : MonoBehaviour
 
         plantData = data;
         IsPlanted = true;
+        currentStage = 0;
+        growthTimer = 0f;
 
-        
-        if (visualHolder != null && plantData.stageModels.Length > 0)
-        {
-            Instantiate(plantData.stageModels[0], visualHolder.transform);
-        }
+        UpdateStageVisual();
     }
 
     void UpdateStageVisual()
@@ -91,7 +89,7 @@ public class PlantScript2 : MonoBehaviour
     {
         if (currentVisual != null)
         {
-            Destroy(currentVisual);
+            GameObject.Destroy(currentVisual);
         }
         if (plantData != null && plantData.stageModels != null && plantData.stageModels.Length > 0)
         {

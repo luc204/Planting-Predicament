@@ -27,11 +27,8 @@ public class PlayerInteraction : MonoBehaviour
         {
             inventory.DropSelectedItem(transform);
         }
-        if (Input.GetKeyDown(KeyCode.E) && CanPlaceHere)
-        {
-            inventory.PlaceSelectedItem(transform); 
-        }
-        if (Input.GetKeyDown(KeyCode.E) && currentPlantSpot != null)
+        
+        if (Input.GetKeyDown(KeyCode.E) && currentPlantSpot != null && CanPlaceHere)
         {
             if (inventory != null)
             {
@@ -47,7 +44,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             currentPickup = pickup;
         }
-        if (other.CompareTag("Placeable"))
+        if (other.CompareTag("PlantingSpot"))
         {
             CanPlaceHere = true;
 
@@ -74,7 +71,7 @@ public class PlayerInteraction : MonoBehaviour
             currentPickup = null;
         }
 
-        if (other.CompareTag("Placeable"))
+        if (other.CompareTag("PlantingSpot"))
         {
             CanPlaceHere = false;
         }
