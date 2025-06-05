@@ -18,7 +18,7 @@ MonoBehaviour:
   pickupPrefab: {fileID: 8024138077497201047, guid: 0973330bb48b15f4f868bd28168b9eea,
     type: 3}
   PlaceablePrefab: {fileID: 0}
-  itemType: 1
+  itemType: 0
   plantName: 
   stageSprites: []
   stageModels: []
