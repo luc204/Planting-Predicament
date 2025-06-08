@@ -41,7 +41,7 @@ public class PlantScript2 : MonoBehaviour
                 {
                     currentStage++;
                     growthTimer = 0f;
-                    UpdateStageVisual();
+                    UpdateStageVisual(); 
 
                     if (currentStage == plantData.stageModels.Length - 1 && plantData.enemyToSpawn != null)
                     {
