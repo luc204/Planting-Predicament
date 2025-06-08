@@ -214,7 +214,7 @@ public class Inventory2 : MonoBehaviour
             // Send data to the Plant
             plantSpot.SetPlantData(selectedSlot.itemInSlot);
 
-            // Reduce inventory
+            // remove inventory item
             selectedSlot.itemCount--;
             if (selectedSlot.itemCount <= 0)
             {
