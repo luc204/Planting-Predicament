@@ -7,7 +7,7 @@ public class MainMenuController : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("Planting");
+        SceneManager.LoadScene("Level 1");
     }
 
     public void QuitGame()
@@ -15,9 +15,9 @@ public class MainMenuController : MonoBehaviour
         Application.Quit();
     }
 
-    public void LoadLocker()
+    public void LoadControls()
     {
-        SceneManager.LoadScene("Locker");
+        SceneManager.LoadScene("Controls");
     }
 
     public void LoadMainMenu()
