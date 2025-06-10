@@ -9,6 +9,9 @@ public class Inventory2 : MonoBehaviour
     public PlayerStats playerStats;
     public ItemSlot[] itemSlots;
     [SerializeField] private GameObject plantPrefab;
+   
+
+    
 
     void Start()
     {
@@ -46,7 +49,7 @@ public class Inventory2 : MonoBehaviour
 
     public void AddItem(ItemData item)
     {
-        // Stack if already present
+       
         foreach (var slot in itemSlots)
         {
             if (slot.itemInSlot == item)
@@ -71,9 +74,11 @@ public class Inventory2 : MonoBehaviour
                 
 
                 return;
+                
             }
         }
-        Debug.LogWarning("Inventory full — couldn't add item.");
+        
+
     }
 
     public void RemoveItem(ItemData item)
@@ -99,6 +104,7 @@ public class Inventory2 : MonoBehaviour
                 return;
             }
         }
+        
     }
     public void SellSelectedItem()
     {
@@ -126,7 +132,7 @@ public class Inventory2 : MonoBehaviour
                 selectedSlot.SpriteImage.enabled = false;
                 selectedSlot.itemCountText.enabled = false;
             }
-        }// Clear the slot and adds money to the players stats.
+        }
         else
         {
             Debug.Log("No item in selected slot to sell or not sellable.");
@@ -159,7 +165,7 @@ public class Inventory2 : MonoBehaviour
             {
                 Debug.LogWarning("No pickupPrefab assigned to " + selectedSlot.itemInSlot.name);
             }
-            selectedSlot.itemCount--; // removes a singular item from the selected slot
+            selectedSlot.itemCount--; 
 
             if (selectedSlot.itemCount <= 0)
             {
@@ -211,10 +217,10 @@ public class Inventory2 : MonoBehaviour
             selectedSlot.itemCount > 0 &&
             !plantSpot.IsPlanted)
         {
-            // Send data to the Plant
+          
             plantSpot.SetPlantData(selectedSlot.itemInSlot);
 
-            // remove inventory item
+           
             selectedSlot.itemCount--;
             if (selectedSlot.itemCount <= 0)
             {

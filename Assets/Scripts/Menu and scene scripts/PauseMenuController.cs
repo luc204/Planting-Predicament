@@ -9,7 +9,7 @@ public class PauseMenuController : MonoBehaviour
 
     void Start()
     {
-        
+        Time.timeScale = 1f;
         pauseMenuUI.SetActive(false);
         isPaused = false;
     }

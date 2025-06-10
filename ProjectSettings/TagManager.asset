@@ -8,6 +8,8 @@ TagManager:
   - Placeable
   - PlantingSpot
   - currentVisual
+  - DropPackage
+  - Car
   layers:
   - Default
   - TransparentFX

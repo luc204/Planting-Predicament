@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: TomatoTrimmed
   m_EditorClassIdentifier: 
   itemName: 
-  itemSprite: {fileID: 21300178, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  itemSprite: {fileID: 21300000, guid: c010e49dc9cb1e5499186c4b19eb2bec, type: 3}
   sellValue: 6
   pickupPrefab: {fileID: 8024138077497201047, guid: 0973330bb48b15f4f868bd28168b9eea,
     type: 3}
   PlaceablePrefab: {fileID: 0}
-  itemType: 0
+  itemType: 1
   plantName: 
   stageSprites: []
   stageModels: []

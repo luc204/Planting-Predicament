@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tomato 1
   m_EditorClassIdentifier: 
   itemName: 
-  itemSprite: {fileID: 295050240, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  itemSprite: {fileID: 21300000, guid: 7acbef3bc68cd97458bc9ffa5ae9ef7c, type: 3}
   sellValue: 0
   pickupPrefab: {fileID: 0}
   PlaceablePrefab: {fileID: 0}
@@ -29,12 +29,12 @@ MonoBehaviour:
   - {fileID: 6651310731303358679, guid: 1392dbd2be3bbd04d8e5c57b904b42ae, type: 3}
   stageDurations:
   - 2
-  - 2
-  - 2
-  - 2
-  - 5
+  - 3
+  - 3
+  - 4
+  - 6
   cuttableStage: 4
-  enemyToSpawn: {fileID: 7689348221730982594, guid: 0e7f84f2bc89f674f8379cd652a62f1a,
+  enemyToSpawn: {fileID: 5687595682346227132, guid: cc69069dce762014b9d4b325495b2926,
     type: 3}
   trimmingPrefab: {fileID: 8024138077497201047, guid: 0973330bb48b15f4f868bd28168b9eea,
     type: 3}

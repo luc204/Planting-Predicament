@@ -11,6 +11,18 @@ public class PlantScript2 : MonoBehaviour
     private float growthTimer = 0f;
     private bool isPlayerPresent = false;
 
+    public AudioSource audioSource;
+    public AudioClip pickupsound;
+    public AudioClip trim;
+
+    void PlayClip(AudioClip clip)
+    {
+        if (clip != null)
+        {
+            audioSource.clip = clip;
+            audioSource.Play();
+        }
+    }
 
     void Start()
     {
@@ -22,6 +34,7 @@ public class PlantScript2 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T) && isPlayerPresent && currentStage == plantData.cuttableStage)
         {
             Cut();
+            PlayClip(trim);
         }
         if (IsPlanted)
         {
@@ -45,7 +58,7 @@ public class PlantScript2 : MonoBehaviour
 
                     if (currentStage == plantData.stageModels.Length - 1 && plantData.enemyToSpawn != null)
                     {
-                        Instantiate(plantData.enemyToSpawn, transform.position, Quaternion.identity);
+                        Instantiate(plantData.enemyToSpawn, transform.position + new Vector3(0, 1f, 0), Quaternion.identity);
                     }
                 }
             }
@@ -68,6 +81,7 @@ public class PlantScript2 : MonoBehaviour
                 randomDirection.y = Mathf.Abs(randomDirection.y);
                 float force = Random.Range(2f, 5f);
                 rb.AddForce(randomDirection * force, ForceMode.Impulse);
+
             }
         }
     }

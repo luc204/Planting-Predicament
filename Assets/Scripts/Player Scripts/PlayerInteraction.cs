@@ -2,9 +2,14 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    public GameObject inventoryObject; // Drag the Inventory GameObject from your Canvas
+    public GameObject inventoryObject; 
     private Inventory2 inventory;
+
+    public AudioSource audioSource;
+    public AudioClip pickupsound;
+    public AudioClip plantsound;
     
+
     private ItemPickup currentPickup;
     public bool CanPlaceHere = false;
     public PlantScript2 currentPlantSpot;
@@ -13,6 +18,7 @@ public class PlayerInteraction : MonoBehaviour
     void Start()
     {
         inventory = inventoryObject.GetComponent<Inventory2>();
+        
     }
 
     void Update()
@@ -20,12 +26,16 @@ public class PlayerInteraction : MonoBehaviour
         if (currentPickup != null && Input.GetKeyDown(KeyCode.E))
         {
             inventory.AddItem(currentPickup.itemToGive);
+            PlayClip(pickupsound);
             Destroy(currentPickup.gameObject);
             currentPickup = null;
+            
+            
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
             inventory.DropSelectedItem(transform);
+            PlayClip(pickupsound);
         }
         
         if (Input.GetKeyDown(KeyCode.E) && currentPlantSpot != null && CanPlaceHere)
@@ -80,7 +90,15 @@ public class PlayerInteraction : MonoBehaviour
             currentPlantSpot = other.GetComponent<PlantScript2>();
         }
     }
-  
+    void PlayClip(AudioClip clip)
+    {
+        if (clip != null)
+        {
+            audioSource.clip = clip;
+            audioSource.Play();
+        }
+    }
+
 }
 
 

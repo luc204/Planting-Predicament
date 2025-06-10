@@ -1,18 +1,24 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    public float speed = 3f;
-    public float attackRange = 1.5f;
-    public int damage = 10;
+    public float speed = 1.5f;
+    public float runAwayDistance = 3f;
+    public int maxHealth = 3;
     public float attackCooldown = 1f;
 
-    private Transform player; // Changed from float to Transform
-    private float lastAttackTime = 0f;
+    public ItemData newPlantItem;
+    public List<ItemData> itemsToDeliver;
+
+    private int currentHealth;
+    private Transform player;
+   
 
     void Start()
     {
-        // Find the player object
+        currentHealth = maxHealth;
+
         PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
         if (playerMovement != null)
         {
@@ -28,25 +34,52 @@ public class EnemyAI : MonoBehaviour
     {
         if (player == null) return;
 
-        // Calculate distance to player
         float distance = Vector3.Distance(transform.position, player.position);
+
+        if (distance < runAwayDistance)
+        {
+            RunAwayFromPlayer();
+        }
+
         
-        // Move towards player if out of attack range
-        if (distance > attackRange)
+        if (distance <= runAwayDistance && Input.GetKeyDown(KeyCode.F))
         {
-            transform.position = Vector3.MoveTowards(
-                transform.position, 
-                player.position, 
-                speed * Time.deltaTime
-            );
+            TakeDamage();
         }
-        // Attack if within range and cooldown has elapsed
-        else if (Time.time >= lastAttackTime + attackCooldown)
-        {
-           
-            lastAttackTime = Time.time;
-        }
+        
     }
 
-    
+    void RunAwayFromPlayer()
+    {
+        Vector3 directionAway = (transform.position - player.position).normalized;
+        transform.position += directionAway * speed * Time.deltaTime;
+    }
+
+    public void TakeDamage()
+    {
+        currentHealth--;
+        Debug.Log("Enemy hit! Remaining health: " + currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            Debug.Log("Enemy destroyed.");
+            Inventory2 inventory = FindObjectOfType<Inventory2>();
+
+            if (inventory != null)
+            {
+                foreach (ItemData item in itemsToDeliver)
+                {
+                    inventory.AddItem(item);
+                    Debug.Log($"Delivered: {item.itemName}");
+
+                }
+            }
+            else
+            {
+                Debug.LogWarning("Inventory not found!");
+            }
+
+            Destroy(gameObject);
+        }
+    }
 }
