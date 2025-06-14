@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -4095150042719181924}
   - component: {fileID: 2777191429950937175}
   - component: {fileID: 4930610607300583240}
+  - component: {fileID: -1446912086398389502}
   m_Layer: 0
   m_Name: 'Car 3 '
   m_TagString: Car
@@ -31,11 +32,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4689609088173680962}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.401855, y: -0.01, z: 13.968856}
   m_LocalScale: {x: 0.79671, y: 0.79671, z: 0.79671}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8156661031243989184}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1790260425505255743
@@ -117,7 +119,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4689609088173680962}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9de7bdfa5003c46e997ca5aa71ee9445, type: 3}
   m_Name: 
@@ -269,3 +271,53 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-1446912086398389502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4689609088173680962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5715f45faf99df748b20928c1efa15ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  selfDestructTime: 10
+  deliveryBoxPrefab: {fileID: 3636662989399434101, guid: 05596bc597b44314ab034cda186744df,
+    type: 3}
+  cargoItem: {fileID: 0}
+  hasDroppedBox: 0
+  CanDropBox: 0
+--- !u!1 &6538950625304328731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8156661031243989184}
+  m_Layer: 0
+  m_Name: DropBoxPlaceHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8156661031243989184
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6538950625304328731}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.993378, y: 0.6526841, z: -0.08642572}
+  m_LocalScale: {x: 1.2551618, y: 1.2551618, z: 1.2551618}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7181897001420701956}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

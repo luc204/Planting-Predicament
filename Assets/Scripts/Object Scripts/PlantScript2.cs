@@ -31,7 +31,7 @@ public class PlantScript2 : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T) && isPlayerPresent && currentStage == plantData.cuttableStage)
+        if (Input.GetKeyDown(KeyCode.T) && isPlayerPresent && plantData != null && currentStage == plantData.cuttableStage)
         {
             Cut();
             PlayClip(trim);

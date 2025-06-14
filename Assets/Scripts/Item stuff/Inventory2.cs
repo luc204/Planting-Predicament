@@ -9,9 +9,21 @@ public class Inventory2 : MonoBehaviour
     public PlayerStats playerStats;
     public ItemSlot[] itemSlots;
     [SerializeField] private GameObject plantPrefab;
-   
 
-    
+    public static Inventory2 Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
 
     void Start()
     {
