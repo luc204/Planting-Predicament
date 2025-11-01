@@ -11,18 +11,7 @@ public class PlantScript2 : MonoBehaviour
     private float growthTimer = 0f;
     private bool isPlayerPresent = false;
 
-    public AudioSource audioSource;
-    public AudioClip pickupsound;
-    public AudioClip trim;
-
-    void PlayClip(AudioClip clip)
-    {
-        if (clip != null)
-        {
-            audioSource.clip = clip;
-            audioSource.Play();
-        }
-    }
+    
 
     void Start()
     {
@@ -34,7 +23,7 @@ public class PlantScript2 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T) && isPlayerPresent && plantData != null && currentStage == plantData.cuttableStage)
         {
             Cut();
-            PlayClip(trim);
+            
         }
         if (IsPlanted)
         {

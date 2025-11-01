@@ -21,7 +21,7 @@ public class InterfaceSystem : MonoBehaviour
         if (showInterface && Input.GetKeyDown(KeyCode.E))
         {
             StoreInterface.SetActive(!StoreInterface.activeSelf);
-            Time.timeScale = StoreInterface.activeSelf ? 0f : 1f;
+            
         }
     }
 

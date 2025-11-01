@@ -5,9 +5,7 @@ public class PlayerInteraction : MonoBehaviour
     public GameObject inventoryObject; 
     private Inventory2 inventory;
 
-    public AudioSource audioSource;
-    public AudioClip pickupsound;
-    public AudioClip plantsound;
+   
     
 
     private ItemPickup currentPickup;
@@ -26,7 +24,7 @@ public class PlayerInteraction : MonoBehaviour
         if (currentPickup != null && Input.GetKeyDown(KeyCode.E))
         {
             inventory.AddItem(currentPickup.itemToGive);
-            PlayClip(pickupsound);
+           
             Destroy(currentPickup.gameObject);
             currentPickup = null;
             
@@ -35,7 +33,7 @@ public class PlayerInteraction : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             inventory.DropSelectedItem(transform);
-            PlayClip(pickupsound);
+            
         }
         
         if (Input.GetKeyDown(KeyCode.E) && currentPlantSpot != null && CanPlaceHere)
@@ -43,6 +41,7 @@ public class PlayerInteraction : MonoBehaviour
             if (inventory != null)
             {
                 inventory.TryPlantAt(currentPlantSpot);
+                Debug.Log("Attempted to plant at spot.");
             }
         }
         
@@ -90,14 +89,7 @@ public class PlayerInteraction : MonoBehaviour
             currentPlantSpot = other.GetComponent<PlantScript2>();
         }
     }
-    void PlayClip(AudioClip clip)
-    {
-        if (clip != null)
-        {
-            audioSource.clip = clip;
-            audioSource.Play();
-        }
-    }
+   
 
 }
 
